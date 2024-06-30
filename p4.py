@@ -1,31 +1,27 @@
 def largest_palindrom_product(maximum):
+    biggestPalindrom = 0
+
     first = maximum
-    second = maximum
-
-    calculated = first * second
-    reversed = reverse(calculated)
-
-    palindroms = []
-
-    while not first == 100 and not second == 100:
-        if calculated == reversed:
-            palindroms.append(calculated)
-
-        first-=1
+    while first >= 100:
+        second = maximum
         
-        if (first == 100):
-            first = maximum
+        while second >= first:
+            calculated = first * second
+            
+            if calculated <= biggestPalindrom:
+                break
+
+            if reverse(calculated) == calculated:
+                biggestPalindrom = calculated
+
             second -= 1
 
-        calculated = first * second
-        reversed = reverse(calculated)
+        first -= 1
 
-    return max(palindroms)
+    return biggestPalindrom
 
 def reverse(number):
     reversed = 0
-
-    print(number)
 
     while number > 0:
         tmp = number % 10
