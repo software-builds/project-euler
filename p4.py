@@ -1,8 +1,17 @@
 def largest_palindrom_product(maximum):
     biggestPalindrom = 0
 
+    minimum = maximum
+    count = 0
+
+    while minimum > 0:
+        minimum //= 10
+        count += 1
+
+    minimum = pow(10, count - 1)
+
     first = maximum
-    while first >= 100:
+    while first >= minimum:
         second = maximum
         
         while second >= first:
